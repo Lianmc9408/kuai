@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .title{
+            color: burlywood;
+            line-height: 40px;
+
+        }
+        .img1{
+            width: 60px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="title" style="display: inline">平平好棒哟</h2>
+    <img src="/static/index.jpeg" class="img1">
+    {% for item in result %}
+        <div>
+            <span>{{item.type.typee}}</span>
+            <span>{{item.second_type}}</span>
+            <a href="{{item.url}}" target="_blank">{{ item.title }}</a>
+            <a href="{{item.cover_url.images_url}}" target="_blank">封面</a>
+        </div>
+    {% endfor %}
+</body>
+</html>
