@@ -11,8 +11,9 @@
 import sys
 sys.path.append('/home/lianmc/kuai')
 
-import os
+import os,django
 os.environ['DJANGO_SETTINGS_MODULE'] = 'kuai.settings'
+django.setup()
 
 BOT_NAME = 'kuaiscrapy'
 

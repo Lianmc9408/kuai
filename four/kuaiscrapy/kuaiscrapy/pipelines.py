@@ -8,6 +8,7 @@
 # import os
 # sys.path.append(os.pardir)
 import pymysql
+from four.models import ImagesUrl
 
 
 class FourPipeline(object):
@@ -57,6 +58,10 @@ class FourPipeline(object):
                     'insert into four_mvinfo(title,url,second_type,cover_url_id,type_id) VALUE (%s, %s, %s, %s, %s)',
                     (title, url, second_type, images_url_id, type_id))
             self.client.commit()
+        elif spider.name == 'tencent':
+            cover_img = item['cover_url']
+            item['cover_url'] = ImagesUrl.objects.create(images_url=cover_img)
+            item.save()
         return item
 
     def close_spider(self, spider):

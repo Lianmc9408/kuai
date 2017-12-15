@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
-from kuaiscrapy import items
-
+# from four.kuaiscrapy import items
+from ..items import FourItem
 
 class FourSpider(scrapy.Spider):
     name = 'four'
-    allowed_domains = ['5120t.com']
-    start_urls = ['http://www.5120t.com/']
+    allowed_domains = ['1171v.com']
+    start_urls = ['https://www.1171v.com']
 
-    url = 'http://www.5120t.com/'
+    url = 'https://www.1171v.com/'
 
     def start_requests(self):
         yield scrapy.Request(url=self.url, callback=self.page_parse)
@@ -42,7 +42,8 @@ class FourSpider(scrapy.Spider):
         # second_type = response.css('.film_bar dd').re_first(r'\s*情色分類：\s*<span>(.*?)</span>')
         second_type = response.css('.movie_info > dl:nth-child(1) > dd:nth-child(5) > span:nth-child(1)::text').extract_first()
         type = response.meta['type']
-        item = items.FourItem()
+        # item = items.FourItem()
+        item = FourItem()
         item['title'] = title
         item['type'] = type
         item['movie_url'] = movie_url
