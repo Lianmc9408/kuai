@@ -6,10 +6,10 @@ from ..items import FourItem
 
 class FourSpider(scrapy.Spider):
     name = 'four'
-    allowed_domains = ['1171v.com']
-    start_urls = ['https://www.1171v.com']
+    allowed_domains = ['1191v.com']
+    start_urls = ['https://www.1191v.com']
 
-    url = 'https://www.1171v.com/'
+    url = 'https://www.1191v.com/'
 
     def start_requests(self):
         yield scrapy.Request(url=self.url, callback=self.page_parse)
@@ -32,7 +32,7 @@ class FourSpider(scrapy.Spider):
         next_page_url = response.css('.pagination a[class="next pagegbk"]').re_first('.*?href="(.*?)" cla.*?下一页')
         if next_page_url:
             next_page_url = response.urljoin(next_page_url)
-            # yield scrapy.Request(next_page_url, callback=self.list_page_parse)
+            yield scrapy.Request(next_page_url, callback=self.list_page_parse)
 
     def detail_parse(self, response):
         title = response.css('.film_info .film_title  h1::text').extract_first()

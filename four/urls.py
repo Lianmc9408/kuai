@@ -17,5 +17,7 @@ from django.conf.urls import url
 from four import views
 
 urlpatterns = [
-    url(r'^', views.index),
+    url(r'^$', views.index),
+    url(r'^tencent/$', views.tencentindex),
+    url(r'^seri/$', views.serializers_ind),
 ]
