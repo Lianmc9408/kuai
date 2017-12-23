@@ -48,3 +48,16 @@ def serializers_ind(request):
     print(serializer.validated_data)
     # serializer.save()
     return HttpResponse("asdasd")
+
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from four import serializers
+
+
+@api_view(['GET', 'POST'])
+def artical_list(request):
+    if request.method == 'GET':
+        queryset = models.Artical.objects.all()
+        serializer = serializers.ArticalSerialzer(queryset, many=True)
+        return Response(serializer.data)
