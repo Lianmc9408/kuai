@@ -60,8 +60,9 @@ class FourPipeline(object):
             self.client.commit()
         elif spider.name == 'tencent':
             cover_img = item['cover_url']
-            item['cover_url'] = ImagesUrl.objects.create(images_url=cover_img)
-            item.save()
+            if not ImagesUrl.objects.filter(images_url=cover_img):
+                item['cover_url'] = ImagesUrl.objects.create(images_url=cover_img)
+                item.save()
         return item
 
     def close_spider(self, spider):
