@@ -13,11 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from four import views
 
 urlpatterns = [
     url(r'^$', views.index),
     url(r'^tencent/$', views.tencentindex),
     url(r'^seri/$', views.serializers_ind),
+    url(r'^artical/$', views.artical_list),
+    url(r'^artical/(?P<pk>[0-9]+)$', views.artical_detail),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
