@@ -21,6 +21,10 @@ urlpatterns = [
     url(r'^tencent/$', views.tencentindex),
     url(r'^seri/$', views.serializers_ind),
     url(r'^artical/$', views.artical_list),
+    url(r'^articals/$', views.ArticalList.as_view()),
+    url(r'^articalss/$', views.ListGenerics.as_view()),
     url(r'^artical/(?P<pk>[0-9]+)$', views.artical_detail),
+    url(r'^articals/(?P<pk>[0-9]+)$', views.ArticalDetail.as_view()),
+    url(r'^articalss/(?P<pk>[0-9]+)$', views.DetailGenerics.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
