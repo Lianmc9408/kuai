@@ -6,10 +6,10 @@ from ..items import FourItem
 
 class FourSpider(scrapy.Spider):
     name = 'four'
-    allowed_domains = ['1397v.com']
-    start_urls = ['https://www.1397v.com/']
+    allowed_domains = ['1575v.com']
+    start_urls = ['https://www.1575v.com/']
 
-    url = 'https://www.1397v.com/'
+    url = 'https://www.1575v.com/'
 
     def start_requests(self):
         yield scrapy.Request(url=self.url, callback=self.page_parse)

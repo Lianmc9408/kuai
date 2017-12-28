@@ -9,7 +9,7 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 import sys
-sys.path.append('/home/lll/桌面/kuai')
+sys.path.append('/home/lianmc/kuai')
 
 import os, django
 # os.environ['DJANGO_SETTINGS_MODULE'] = 'kuai.settings'
