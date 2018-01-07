@@ -73,6 +73,8 @@ DEFAULT_REQUEST_HEADERS = {
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'kuaiscrapy.pipelines.FourPipeline': 300,
+    # 开启后分布式爬取的结果也会存储到主机的Redis队列中
+    # 'scrapy_redis.pipelines.RedisPipeline' : 301
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -98,3 +100,11 @@ ITEM_PIPELINES = {
 MYSQL_URI = '127.0.0.1'
 MYSQL_PORT = 3306
 MYSQL_DATABASE = 't3'
+
+# 分布式
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+# 主机的Redis地址，从机都会存储到这个主机的Redis中
+REDIS_URL = 'redis://username:passwd@hostname:6379'
+# 全部爬虫完成任务后不会清空redis指纹和requests，一般都清空
+SCHEDULER_PERSIST = True

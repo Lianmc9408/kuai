@@ -51,4 +51,3 @@ class FourSpider(scrapy.Spider):
         item['second_type'] = second_type
         yield item
         # print(type, second_type, title, cover_url, movie_url)
-        # https://www.5120t.com/Html/100/23236.html
